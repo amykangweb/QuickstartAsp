@@ -81,6 +81,26 @@
             <li class=@ViewData["style"]></li>
         </ul>
 
+        @{ 
+            if(!string.IsNullOrEmpty(Model.Greeting))
+            {
+                <p>@Model.Greeting</p>
+
+            }
+
+        }
+
+        @{ 
+            var style = "morningTheme";
+            if(DateTime.Now.Hour == 12)
+            {
+                style = "eveningTheme";
+
+            }
+
+            <strong>@style</strong>
+        }
+
     </div>
 </div>
 
