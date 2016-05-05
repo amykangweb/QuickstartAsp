@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using QuickstartAsp.Models;
 
 namespace QuickstartAsp.Controllers
 {
@@ -10,7 +11,12 @@ namespace QuickstartAsp.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new GreetingModel
+            {
+                Greeting = "Welcome to the World of MVC",
+                Name = "Your friendly neighborhood MVC App"
+            };
+            return View(model);
         }
 
         public IActionResult About()
