@@ -73,6 +73,14 @@
                 <h3>@Model.Name</h3>
                 </div>
 
+        <span>@DateTime.Now.ToLongDateString()</span>
+        <h3>@Model.Name</h3>
+
+        style = @ViewData["style"];
+        <ul>
+            <li class=@ViewData["style"]></li>
+        </ul>
+
     </div>
 </div>
 

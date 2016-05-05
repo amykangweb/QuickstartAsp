@@ -16,6 +16,7 @@ namespace QuickstartAsp.Controllers
                 Greeting = "Welcome to the World of MVC",
                 Name = "Your friendly neighborhood MVC App"
             };
+            ViewData["style"] = "What?";
             return View(model);
         }
 
