@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    @model QuickstartAsp.Models.ItineraryItem
+    <h2>Create</h2>
+    <div class="editor">
+        @using(Html.BeginForm()){
+
+            @Html.ValidationSummary(true)
+
+            <p>
+                @Html.LabelFor(m = m.Description)
+                @Html.EditorFor(m = m.Description)
+                @Html.ValidationMessageFor(m = m.Description)
+            </p>
+
+            <p>
+               @Html.LabelFor(m = m.When)
+               @Html.EditorFor(m = m.When)
+               @Html.ValidationMessageFor(m = m.When)
+            </p>
+
+            <p>
+                @Html.LabelFor(m = m.Duration)
+                @Html.EditorFor(m = m.Duration)
+                @Html.ValidationMessageFor(m = m.Duration)
+            </p>
+            
+            <p><input type="submit" value="Save" /></p>
+        }
+    </div>
+</body>
+</html>
