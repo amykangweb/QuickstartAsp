@@ -13,21 +13,21 @@
             @Html.ValidationSummary(true)
 
             <p>
-                @Html.LabelFor(m = m.Description)
-                @Html.EditorFor(m = m.Description)
-                @Html.ValidationMessageFor(m = m.Description)
+                @Html.LabelFor(m => m.Description)
+                @Html.EditorFor(m => m.Description)
+                @Html.ValidationMessageFor(m => m.Description)
             </p>
 
             <p>
-               @Html.LabelFor(m = m.When)
-               @Html.EditorFor(m = m.When)
-               @Html.ValidationMessageFor(m = m.When)
+               @Html.LabelFor(m => m.When)
+               @Html.EditorFor(m => m.When)
+               @Html.ValidationMessageFor(m => m.When)
             </p>
 
             <p>
-                @Html.LabelFor(m = m.Duration)
-                @Html.EditorFor(m = m.Duration)
-                @Html.ValidationMessageFor(m = m.Duration)
+                @Html.LabelFor(m => m.Duration)
+                @Html.EditorFor(m => m.Duration)
+                @Html.ValidationMessageFor(m => m.Duration)
             </p>
             
             <p><input type="submit" value="Save" /></p>
