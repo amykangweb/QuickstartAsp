@@ -21,10 +21,12 @@ namespace QuickStartAsp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("QuickContext", throwIfV1Schema: false)
         {
         }
-
+        // Can add new tables here
+        // This application uses custom db QuickContext in DAL dir
+        // public DbSet<Post> Posts { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
