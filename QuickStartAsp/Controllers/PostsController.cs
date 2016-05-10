@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using QuickStartAsp.DAL;
 using QuickStartAsp.Models;
 
@@ -14,10 +11,18 @@ namespace QuickStartAsp.Controllers
     public class PostsController : Controller
     {
         private QuickContext db = new QuickContext();
+        private IdentityDbContext users = new IdentityDbContext();
 
         // GET: Posts
         public ActionResult Index()
         {
+            // Name is actually user email.
+            string CurrentUserEmail = User.Identity.Name;
+            // User name is set to same as email.
+            string CurrentUserName = User.Identity.GetUserName();
+
+            ViewData["name"] = CurrentUserName;
+            ViewData["email"] = CurrentUserEmail;
             return View(db.Posts.ToList());
         }
 
@@ -40,7 +45,21 @@ namespace QuickStartAsp.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            // Get current user id.
+            string CurrentUserId = User.Identity.GetUserId();
+            // Find user object from current user.
+            var CurrentUser = users.Users.FirstOrDefault(f => f.Id == CurrentUserId);
+
+            if (CurrentUser.Admin)
+            {
+                return View();
+            } else
+            {
+                // Temporary message.
+                TempData["error"] = "You are not authorized.";
+                // Redirect to Index action in Home controller.
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: Posts/Create

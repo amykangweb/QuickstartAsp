@@ -1,6 +1,6 @@
 ﻿using QuickStartAsp.Models;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity.ModelConfiguration;
 
 namespace QuickStartAsp.DAL
 {
@@ -9,10 +9,5 @@ namespace QuickStartAsp.DAL
         public QuickContext() : base("QuickContext") { }
 
         public DbSet<Post> Posts { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
     }
 }

@@ -9,6 +9,8 @@ namespace QuickStartAsp.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public bool Admin { get; set; } = false;
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -18,18 +20,16 @@ namespace QuickStartAsp.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class IdentityDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public IdentityDbContext()
             : base("QuickContext", throwIfV1Schema: false)
         {
         }
-        // Can add new tables here
-        // This application uses custom db QuickContext in DAL dir
-        // public DbSet<Post> Posts { get; set; }
-        public static ApplicationDbContext Create()
+
+        public static IdentityDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new IdentityDbContext();
         }
     }
 }
