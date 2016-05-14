@@ -43,23 +43,14 @@ namespace QuickStartAsp.Controllers
 
         // GET: Posts/Create
         [Authorize]
+        [AdminFilter]
         public ActionResult Create()
         {
             // Get current user id.
-            string CurrentUserId = User.Identity.GetUserId();
+            // string CurrentUserId = User.Identity.GetUserId();
             // Find user object from current user.
-            var CurrentUser = users.Users.FirstOrDefault(f => f.Id == CurrentUserId);
-
-            if (CurrentUser.Admin)
-            {
-                return View();
-            } else
-            {
-                // Temporary message.
-                TempData["error"] = "You are not authorized.";
-                // Redirect to Index action in Home controller.
-                return RedirectToAction("Index", "Home");
-            }
+            // var CurrentUser = users.Users.FirstOrDefault(f => f.Id == CurrentUserId);
+            return View();
         }
 
         // POST: Posts/Create
