@@ -11,6 +11,7 @@ namespace QuickStartAsp.Models
         [Key]
         public int ID { get; set; }
         public string Title { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
     }
 }
